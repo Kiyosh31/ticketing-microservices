@@ -1,0 +1,33 @@
+name: build-client
+
+on:
+  push:
+    branches: ['master']
+  pull_request:
+    branches: ['master']
+    paths: # this is only if the changes are performed in this directory
+      - 'client-service/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: 'client-service'
+
+    strategy:
+      matrix:
+        node-version: [18.x]
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+          cache-dependency-path: client-service/package-lock.json
+      - run: npm ci
+      - run: npm run build --if-present
+      - run: npm run test:ci
