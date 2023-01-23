@@ -1,5 +1,4 @@
 const app = require('./app');
-// const connectToDb = require('./utilities/dbConnection');
 
 const start = async () => {
   if (!process.env.START_PORT) throw new Error('START_PORT must be defined');
