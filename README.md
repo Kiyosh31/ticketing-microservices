@@ -44,6 +44,11 @@ This project is a challenge for myself, to understand and apply microservices wi
   git clone git@github.com:Kiyosh31/bloc-microservices.git
   ```
 
+- Get into the project and install the dependencies
+  ```console
+  ./install-dependencies.sh
+  ```
+
 4. Run the project
 
    ```console
