@@ -9,7 +9,7 @@ const start = async () => {
 };
 
 app.listen(process.env.START_PORT, () => {
-  console.log(`Listening on port ${process.env.START_PORT}!!!`);
+  console.log(`Listening on port adadasdsdas${process.env.START_PORT}!!!`);
 });
 
 start();
