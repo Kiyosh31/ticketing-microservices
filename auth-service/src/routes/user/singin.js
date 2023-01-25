@@ -1,6 +1,6 @@
 const express = require('express');
-const { body, validationResult } = require('express-validator');
 const User = require('../../models/user');
+const { body, validationResult } = require('express-validator');
 const { StandardResponse } = require('@kytickets/common');
 
 const signinRouter = express.Router();

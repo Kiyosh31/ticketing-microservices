@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const { DatabaseConnectionError } = require('@kytickets/common');
 
 const connectToDb = async () => {
   try {
@@ -8,7 +9,7 @@ const connectToDb = async () => {
     return res;
   } catch (e) {
     console.log(e);
-    throw new Error(e);
+    throw new DatabaseConnectionError();
   }
 };
 
