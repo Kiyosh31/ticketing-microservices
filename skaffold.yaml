@@ -8,8 +8,8 @@ build:
   local:
     push: false
   artifacts:
-    - image: kiyoshi/users
-      context: users-service
+    - image: kiyoshi/auth
+      context: auth-service
       docker:
         dockerfile: Dockerfile
       sync:

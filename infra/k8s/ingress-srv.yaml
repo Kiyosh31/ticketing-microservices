@@ -14,7 +14,7 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: users-srv
+                name: auth-srv
                 port:
                   number: 4000
           - path: /api/events/?(.*)
