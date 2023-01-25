@@ -1,0 +1,7 @@
+{
+  "extends": ["next/babel", "next/core-web-vitals", "eslint:recommended", "prettier"],
+  "plugins": ["cypress"],
+  "env": {
+    "cypress/globals": true
+  }
+}

@@ -1,5 +1,5 @@
-# dependencies
 node_modules
+common
 
 .DS_Store
 .env.local
