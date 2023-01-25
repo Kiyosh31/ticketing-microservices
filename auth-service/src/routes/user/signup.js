@@ -1,11 +1,12 @@
 const express = require('express');
 const User = require('../../models/user');
 const { body, validationResult } = require('express-validator');
+const { StandardResponse } = require('@kytickets/common');
 
 const signupRouter = express.Router();
 
 signupRouter.post(
-  '/',
+  '/signup',
   [
     body('email').isEmail().withMessage('Email must be valid'),
     body('password')
@@ -24,15 +25,22 @@ signupRouter.post(
 
     const existingUser = await User.findOne({ email });
 
-    if (existingUser) {
-      console.log('email in use');
-      return res.send({ message: 'email in use' });
+    const response = new StandardResponse(
+      (statusCode = 400),
+      (message = 'User already exists'),
+      (data = null)
+    );
+
+    if (!existingUser) {
+      const user = User.build({ email, password });
+      await user.save();
+
+      response.data = user;
+      response.message = 'User created!';
+      response.statusCode = 200;
     }
 
-    const user = User.build({ email, password });
-    await user.save();
-
-    res.status(200).send(user);
+    res.status(response.statusCode).send(response);
   }
 );
 
